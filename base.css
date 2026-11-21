@@ -1,0 +1,52 @@
+@font-face{font-family:Cormorant;src:url("./assets/cormorant-cyr.woff2") format("woff2");font-weight:600 700;font-style:normal;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Cormorant;src:url("./assets/cormorant-lat.woff2") format("woff2");font-weight:600 700;font-style:normal;font-display:swap}
+@font-face{font-family:Cormorant;src:url("./assets/cormorant-italic-cyr.woff2") format("woff2");font-weight:600;font-style:italic;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Cormorant;src:url("./assets/cormorant-italic-lat.woff2") format("woff2");font-weight:600;font-style:italic;font-display:swap}
+@font-face{font-family:Manrope;src:url("./assets/manrope-cyr.woff2") format("woff2");font-weight:400 800;font-display:swap;unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Manrope;src:url("./assets/manrope-lat.woff2") format("woff2");font-weight:400 800;font-display:swap}
+:root{
+  color-scheme:light;
+  --paper:#f9f5ef;--white:#fffcf7;--sand:#eee4d7;--oat:#f2e9de;
+  --lavender:#eee5f1;--lavender-deep:#e5d8ec;--ink:#312539;--muted:#605461;
+  --plum:#5e426b;--dark:#402f4a;--line:#d8cbd3;--line-sand:#dfd3c9;
+  --serif:Cormorant,Georgia,"Times New Roman",serif;--sans:Manrope,system-ui,sans-serif;
+  --content:1200px;--header:74px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header) + 18px)}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 15px/1.65 var(--sans)}
+img,svg{display:block;max-width:100%}
+img{height:auto}
+h1,h2,h3,h4,p,figure,ol,ul{margin:0}
+h1,h2,h3,h4{line-height:1.04}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid #8c4d96;outline-offset:4px}
+::selection{background:#decae9;color:#312539}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:fixed;left:16px;top:14px;z-index:99;padding:10px 15px;background:var(--white);transform:translateY(-150%)}
+.skip:focus{transform:none}
+.container{width:min(var(--content),calc(100% - 96px));margin-inline:auto}
+.caption{font-size:13px;color:var(--muted);line-height:1.6}
+.source,.text-link{color:var(--plum);text-decoration-thickness:1px;text-underline-offset:.23em;font-weight:750}
+.source:hover,.text-link:hover{color:var(--ink);text-decoration-thickness:2px}
+.text-link{display:inline-flex;align-items:center;gap:8px;font-size:13px}
+.eyebrow{font:800 11px/1.45 var(--sans);text-transform:uppercase;letter-spacing:.16em;color:var(--plum)}
+.eyebrow span{font-variant-numeric:tabular-nums}
+.index{font-size:11px;font-weight:800;letter-spacing:.09em;color:var(--plum)}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:11px}
+.btn{display:inline-flex;min-height:47px;align-items:center;justify-content:center;gap:10px;padding:11px 16px;border:1px solid transparent;border-radius:3px;font-size:13px;font-weight:800;line-height:1.35;text-decoration:none;text-align:center;transition:background .18s,border-color .18s,color .18s}
+.btn-primary{background:var(--plum);color:var(--white);border-color:var(--plum)}
+.btn-primary:hover{background:var(--dark);border-color:var(--dark)}
+.btn-outline{background:transparent;border-color:#aa96ab;color:var(--plum)}
+.btn-outline:hover{background:var(--lavender);border-color:var(--plum)}
+.btn-light{background:var(--lavender);color:var(--dark)}
+.btn-light:hover{background:var(--white)}
+.chip{display:inline-flex;align-items:center;align-self:flex-start;min-height:25px;padding:4px 8px;border:1px solid #bdabbe;border-radius:2px;font-size:10px;font-weight:800;letter-spacing:.045em;text-transform:uppercase;color:var(--plum);line-height:1.3}
+.text-button{border:0;background:transparent;color:var(--plum);font-size:13px;font-weight:800;padding:8px 0;text-decoration:underline;text-underline-offset:.25em}
+.text-button:hover{color:var(--ink)}
+@media(max-width:850px){:root{--header:65px}.container{width:calc(100% - 52px)}}
+@media(max-width:540px){.container{width:calc(100% - 36px)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}

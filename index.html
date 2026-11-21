@@ -1,2 +1,912 @@
-<!DOCTYPE html>
-<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Test — Написать разработчику</title><style>:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:#0a0e14;color:#e5f3f5;font:16px/1.6 system-ui,sans-serif}main{width:min(100%,640px);padding:28px;border:1px solid #31555e;border-radius:16px;background:#0d171f;box-shadow:0 0 40px #00f0ff0b}h1{margin:0 0 16px;color:#c8ffff;font:700 clamp(24px,5vw,32px)/1.3 Consolas,monospace}p{color:#9bb7bd}textarea{display:block;width:100%;min-height:190px;resize:vertical;padding:14px;background:#091219;color:#e5f3f5;border:1px solid #31555e;border-radius:8px;font:inherit}label{display:block;margin-bottom:8px}button{width:100%;margin-top:16px;padding:14px;background:#00f0ff18;color:#c8ffff;border:1px solid #00f0ff;border-radius:8px;font:600 16px system-ui;cursor:pointer}button:hover{background:#00f0ff30}:focus-visible{outline:2px solid #00ff9d;outline-offset:4px}a{color:#00f0ff}.status{color:#00ff9d;font-size:14px}.note{font-size:14px}footer{margin-top:24px;font-size:12px;color:#9bb7bd}</style></head><body><main><h1>Написать разработчику</h1><p>Есть идея, вопрос или замечание по продукту? Напишите сообщение.</p><form id="feedback" action="mailto:ankors8@yandex.ru" method="get"><input type="hidden" name="subject" value="Обращение с тестового сайта"><label for="message">Ваше сообщение</label><textarea id="message" name="body" required maxlength="5000" placeholder="Напишите текст письма…"></textarea><button type="submit">Отправить</button></form><p class="note">Кнопка откроет ваше почтовое приложение с подготовленным письмом на <a href="mailto:ankors8@yandex.ru">ankors8@yandex.ru</a>. Отправку нужно подтвердить в почтовом приложении. Сайт самостоятельно письма не отправляет.</p><p class="status" id="status" role="status"></p><footer>Тестовая страница • Обновлено 14 октября 2026 года</footer></main><script>document.getElementById('feedback').addEventListener('submit',function(e){e.preventDefault();const text=document.getElementById('message').value.trim();if(!text){document.getElementById('status').textContent='Введите текст сообщения.';return;}const url='mailto:ankors8@yandex.ru?subject='+encodeURIComponent('Обращение с тестового сайта')+'&body='+encodeURIComponent(text);document.getElementById('status').textContent='Запрошено открытие почтового приложения. Подтвердите отправку там. Если оно не открылось, скопируйте текст и отправьте письмо на указанный адрес. Текст сохранён в поле.';window.location.href=url;});</script></body></html>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="theme-color" content="#f9f5ef">
+  <meta name="description" content="Метра: личное предложение Ирины для Аи. Недвижимость, индивидуальный интерьер и расчёт совместного пилота в Екатеринбурге.">
+  <title>Метра · Предложение Ирины для Аи</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="./assets/cormorant-cyr.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="./assets/manrope-cyr.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./base.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Перейти к содержанию</a>
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#idea" class="wordmark" aria-label="Метра, к началу">метра<span>.</span></a>
+      <nav id="site-nav" class="site-nav" aria-label="Разделы презентации">
+        <a href="#idea" aria-current="location">Идея</a>
+        <a href="#market">Рынок</a>
+        <a href="#product">Продукт</a>
+        <a href="#together">Вместе</a>
+        <a href="#calculator">Калькулятор</a>
+        <a href="#flipping">Флиппинг</a>
+        <a href="#pilot">Пилот</a>
+        <a href="#verdict">Вывод</a>
+      </nav>
+      <a class="header-note" href="#letter">Ирина для Аи <span aria-hidden="true">↗</span></a>
+      <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span>Разделы</span><span class="menu-icon" aria-hidden="true"></span></button>
+    </div>
+    <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+  </header>
+
+  <main id="main">
+    <section id="idea" class="hero chapter" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Предложение Ирины для Аи</p>
+            <h1 id="hero-title">Ая, предлагаю вместе проверить идею <em>«Метры».</em></h1>
+            <p class="hero-intro">Мне интересно вместе с тобой пройти весь путь: найти удачные квартиры, придумать для них интерьеры и довести работы до приёмки. Давай посмотрим на объём задач, вложения и риски и решим, в каком формате это будет интересно и выгодно нам обеим.</p>
+            <div class="actions">
+              <a href="#together" class="btn btn-primary">Что будем делать вместе <span aria-hidden="true">↘</span></a>
+              <a href="#calculator" class="btn btn-outline">Открыть калькулятор</a>
+            </div>
+            <p class="hero-dateline">Екатеринбург <span aria-hidden="true"></span> Ноябрь 2026</p>
+          </div>
+          <figure class="hero-figure">
+            <div class="hero-picture">
+              <img src="./assets/interior-35.webp" width="1050" height="1400" fetchpriority="high" alt="Концепция гостиной: арочное окно, ореховая дверь, светлый диван и бордовый ковёр">
+            </div>
+            <div class="hero-card">
+              <span class="eyebrow">Обещание покупателю</span>
+              <p>Увидеть будущий интерьер ещё до покупки.</p>
+              <a class="text-link" href="#utp">Что получает покупатель <span aria-hidden="true">↗</span></a>
+            </div>
+            <figcaption>Концепция интерьера · не реализованный объект</figcaption>
+          </figure>
+        </div>
+        <div class="hero-facts">
+          <div><strong>25–35 м²</strong><span>Компактные квартиры</span></div>
+          <div><strong>Два договора</strong><span>Квартира у застройщика, ремонт по желанию</span></div>
+          <div><strong>Без выкупа</strong><span>Не вкладываем свои деньги в покупку квартиры</span></div>
+        </div>
+      </div>
+      <div class="container model-block">
+        <div class="model-lead">
+          <p class="eyebrow"><span>01</span> · Бизнес-модель</p>
+          <h2 class="section-title">Квартиру покупает клиент. Интерьер делаем мы.</h2>
+          <p>Показываем концепцию на конкретной планировке. После обмера фиксируем согласованный объём работ, смету и срок отдельным договором.</p>
+        </div>
+        <ol class="contract-list" role="list">
+          <li><span class="index">01</span><div><strong>Клиент → застройщик</strong><p>Покупка квартиры напрямую. Оплата недвижимости не проходит через «Метру».</p></div></li>
+          <li><span class="index">02</span><div><strong>Клиент → «Метра»</strong><p>Добровольный договор на проект, ремонт, мебель и технику. Базовый график: 70% при подписании, 30% после приёмки по акту.</p></div></li>
+          <li><span class="index">03</span><div><strong>Застройщик → «Метра»</strong><p>Возможное вознаграждение за привлечённого покупателя. Только при выполнении письменного соглашения; 2% в модели не гарантированы.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="market" class="chapter section market-section" aria-labelledby="market-title">
+      <div class="container">
+        <header class="section-head">
+          <div><p class="eyebrow"><span>02</span> · Рынок</p><h2 class="section-title" id="market-title">С чем сравнят<br>8,95 млн ₽</h2></div>
+          <p>Главная альтернатива для покупателя не пустая новостройка, а уже готовая квартира. Смотрим, что входит в цену и можно ли заселиться сразу.</p>
+        </header>
+        <div class="benchmark-grid">
+          <article class="benchmark"><span class="chip">Данные рынка</span><p class="big-number">6,08 <small>млн ₽</small></p><h3>Чистовая без заявленной мебели</h3><p>35 м² · ЖК «Первый Академ». Ключи получены по описанию продавца.</p><a class="source" href="https://ekb.cian.ru/sale/flat/335157154/" target="_blank" rel="noopener noreferrer">Объявление на Циан <span aria-hidden="true">↗</span></a></article>
+          <article class="benchmark benchmark-feature"><span class="chip">Ближайший по комплектности</span><p class="big-number">7,29 <small>млн ₽</small></p><h3>Ремонт, мебель и техника</h3><p>36,6 м² · Краснолесья, 96. В объявлении указана полная комплектация.</p><a class="source" href="https://www.metrtv.ru/prodaga_i_arenda/sell/flat/787071" target="_blank" rel="noopener noreferrer">Объявление «Квадратного метра» <span aria-hidden="true">↗</span></a></article>
+          <article class="benchmark benchmark-model"><span class="chip">Сценарий</span><p class="big-number">8,95 <small>млн ₽</small></p><h3>«Метра»: цена для теста</h3><p>35 м² · квартира 6 млн ₽ + работы 2,95 млн ₽. На 1,66 млн ₽ (+22,8%) выше указанного готового аналога.</p><a class="text-link" href="#calculator" data-calc-tab="buyer" data-compare="7290">Сравнить полный чек <span aria-hidden="true">↗</span></a></article>
+        </div>
+        <details class="disclosure market-disclosure" id="market-table">
+          <summary>8 готовых квартир в Академическом <span class="summary-meta">34,7–36,6 м²</span></summary>
+          <div class="detail-body">
+            <p class="caption">Цены сторонних объявлений на 21.11.2026. Это не цены закрытых сделок, не лоты «Метры» и не гарантия наличия.</p>
+            <table class="responsive-table listing-table">
+              <thead><tr><th scope="col">Адрес</th><th scope="col">Площадь · этаж</th><th scope="col">Цена</th><th scope="col">Комплектация по объявлению</th><th scope="col">Сравнение</th></tr></thead>
+              <tbody>
+                <tr class="featured-row"><th scope="row"><a class="source" href="https://www.metrtv.ru/prodaga_i_arenda/sell/flat/787071" target="_blank" rel="noopener noreferrer">Краснолесья, 96 ↗</a><small>ЖК «Академ-Центр»</small></th><td data-label="Площадь · этаж">36,6 м² · 12/25</td><td data-label="Цена"><strong>7,29 млн ₽</strong><small>199,2 тыс. ₽/м²</small></td><td data-label="Комплектация">Современный ремонт, отдельная спальня, вся мебель и техника.</td><td><a class="table-action" href="#calculator" data-calc-tab="buyer" data-compare="7290" aria-label="Сравнить с Краснолесья, 96">Сравнить ↗</a></td></tr>
+                <tr><th scope="row"><a class="source" href="https://www.metrtv.ru/prodaga_i_arenda/sell/flat/776881" target="_blank" rel="noopener noreferrer">Павла Шаманова, 5/3 ↗</a><small>ЖК «Аксиома»</small></th><td data-label="Площадь · этаж">36,1 м² · 22/22</td><td data-label="Цена"><strong>7,39 млн ₽</strong><small>204,7 тыс. ₽/м²</small></td><td data-label="Комплектация">Ремонт и кухня. Состав остальной мебели и техники не указан.</td><td><a class="table-action" href="#calculator" data-calc-tab="buyer" data-compare="7390" aria-label="Сравнить с Павла Шаманова, 5/3">Сравнить ↗</a></td></tr>
+                <tr><th scope="row"><a class="source" href="https://ekb.cian.ru/sale/flat/333214470/" target="_blank" rel="noopener noreferrer">Академика Парина, 38/3 ↗</a></th><td data-label="Площадь · этаж">36,0 м² · 15/17</td><td data-label="Цена"><strong>6,65 млн ₽</strong><small>184,7 тыс. ₽/м²</small></td><td data-label="Комплектация">Косметический ремонт, обновлённый санузел, кухня, техника и две гардеробные.</td><td><a class="table-action" href="#calculator" data-calc-tab="buyer" data-compare="6650" aria-label="Сравнить с Академика Парина, 38/3">Сравнить ↗</a></td></tr>
+                <tr><th scope="row"><a class="source" href="https://ekb.cian.ru/sale/flat/336102141/" target="_blank" rel="noopener noreferrer">Вильгельма де Геннина, 25к2 ↗</a><small>ЖК «Первый Академ»</small></th><td data-label="Площадь · этаж">35,7 м² · 2/18</td><td data-label="Цена"><strong>6,53 млн ₽</strong><small>182,9 тыс. ₽/м²</small></td><td data-label="Комплектация">Чистовая, кухня с техникой. Мебель в спальне не заявлена.</td><td><a class="table-action" href="#calculator" data-calc-tab="buyer" data-compare="6530" aria-label="Сравнить с Вильгельма де Геннина, 25 корпус 2">Сравнить ↗</a></td></tr>
+                <tr><th scope="row"><a class="source" href="https://ekb.cian.ru/sale/flat/335484121/" target="_blank" rel="noopener noreferrer">Академика Парина, 38 ↗</a></th><td data-label="Площадь · этаж">34,7 м² · 18/25</td><td data-label="Цена"><strong>6,50 млн ₽</strong><small>187,3 тыс. ₽/м²</small></td><td data-label="Комплектация">Отделка от застройщика, кухня и гардеробная. Техника не заявлена.</td><td><a class="table-action" href="#calculator" data-calc-tab="buyer" data-compare="6500" aria-label="Сравнить с Академика Парина, 38">Сравнить ↗</a></td></tr>
+                <tr><th scope="row"><a class="source" href="https://ekb.cian.ru/sale/flat/333014627/" target="_blank" rel="noopener noreferrer">Академика Сахарова, 31Б ↗</a></th><td data-label="Площадь · этаж">35,8 м² · 16/18</td><td data-label="Цена"><strong>6,25 млн ₽</strong><small>174,6 тыс. ₽/м²</small></td><td data-label="Комплектация">Кухня, варочная панель, шкаф и мебель в ванной. Остальное по договорённости.</td><td><a class="table-action" href="#calculator" data-calc-tab="buyer" data-compare="6250" aria-label="Сравнить с Академика Сахарова, 31Б">Сравнить ↗</a></td></tr>
+                <tr><th scope="row"><a class="source" href="https://ekaterinburg.domclick.ru/card/sale__flat__2082043459" target="_blank" rel="noopener noreferrer">Академика Ландау, 39 ↗</a></th><td data-label="Площадь · этаж">35,0 м² · 6/16</td><td data-label="Цена"><strong>5,70 млн ₽</strong><small>162,9 тыс. ₽/м²</small></td><td data-label="Комплектация">Ремонт, почти вся мебель остаётся. Перечень техники не указан.</td><td><a class="table-action" href="#calculator" data-calc-tab="buyer" data-compare="5700" aria-label="Сравнить с Академика Ландау, 39">Сравнить ↗</a></td></tr>
+                <tr><th scope="row"><a class="source" href="https://www.metrtv.ru/prodaga_i_arenda/sell/flat/783408" target="_blank" rel="noopener noreferrer">Академика Сахарова, 29/4 ↗</a></th><td data-label="Площадь · этаж">35,5 м² · 18/19</td><td data-label="Цена"><strong>5,65 млн ₽</strong><small>159,2 тыс. ₽/м²</small></td><td data-label="Комплектация">Светлая отделка, кухня, мебельная стенка и прихожая. Техника не заявлена.</td><td><a class="table-action" href="#calculator" data-calc-tab="buyer" data-compare="5650" aria-label="Сравнить с Академика Сахарова, 29/4">Сравнить ↗</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+        <details class="disclosure">
+          <summary>Рыночные ориентиры и выбор первого ЖК</summary>
+          <div class="detail-body detail-columns">
+            <div><h3>Цена входа</h3><p>В октябре 2026 года средняя цена предложения новостроек Екатеринбурга составляла 177,6 тыс. ₽/м², студий около 190 тыс. ₽/м². Это ориентир по городу без поправки на отделку и микрорайон (<a class="source" href="https://ura.news/news/1053141790" target="_blank" rel="noopener noreferrer">URA.RU · «Эталон» и «Этажи»</a>).</p></div>
+            <div><h3>Что уже предлагают</h3><p>РСГ-Академическое рекламирует квартиры с кухней и техникой от 6 млн ₽; на дату среза полная меблировка в продаже отсутствовала. Цена «от» не относится к идентичной квартире. Условия ипотеки застройщика не распространяются на наш договор (<a class="source" href="https://akademicheskiy.org/kvartiry-s-mebelyu/" target="_blank" rel="noopener noreferrer">каталог РСГ</a>).</p></div>
+            <div><h3>Что ищем на пилот</h3><p>Один дом с понятным сроком доступа, 3–5 лотов, две повторяемые планировки. Для базовой сметы нужна предчистовая отделка (white box), без переноса мокрых зон. 6 млн ₽ в модели не согласованная цена.</p></div>
+            <div><h3>Бонус не базовое условие</h3><p>В Екатеринбурге встречаются агентские программы, например у <a class="source" href="https://ekaterinburg.brusnika.ru/agent/" target="_blank" rel="noopener noreferrer">«Брусники»</a>. Допуск, фиксацию клиента, ставку и дату платежа согласуем письменно. Проверяем модель и при 0%.</p></div>
+            <div><h3>Примеры цен на компактные лоты</h3><p>На дату среза в готовых новостройках: «Спутник-1», 25,8 м² за 4,73 млн ₽ по акции; «Первый Академ», 30,3 м² за 6,00 млн ₽ по акции (<a class="source" href="https://ekb.cian.ru/kupit-kvartiru-studiu-novostroyki-gotovie/" target="_blank" rel="noopener noreferrer">Циан</a>). У КОРТРОС тот же лот «Спутника-1» указан за 5,913 млн ₽ без этой скидки (<a class="source" href="https://ekb.kortros.ru/projects/sputnik-1" target="_blank" rel="noopener noreferrer">каталог КОРТРОС</a>).</p></div>
+            <div><h3>Где граница нашей сметы</h3><p>Локальный подрядчик приводит 30–40 тыс. ₽/м² для стандартной отделки с материалами и от 50 тыс. ₽/м² для премиальной (<a class="source" href="https://uraldoma.ru/articles/apartment-renovation-cost-yekaterinburg/" target="_blank" rel="noopener noreferrer">URALDOMA</a>). Наши 37 тыс. ₽/м² только за ремонт предполагают white box и адаптацию. Мебель и управление считаются отдельно.</p></div>
+          </div>
+        </details>
+        <button type="button" class="text-button standalone-link" data-show-sources>Скопировать адреса объявлений и обзоров <span aria-hidden="true">↗</span></button>
+      </div>
+    </section>
+
+    <section id="product" class="chapter section product-section" aria-labelledby="product-title">
+      <div class="container">
+        <header class="section-head" id="utp">
+          <div><p class="eyebrow"><span>03</span> · Продукт</p><h2 class="section-title" id="product-title">Не пустые метры.<br>Понятный будущий дом.</h2></div>
+          <p>Главное УТП: до покупки показать, как работает конкретная планировка. Клиент видит, где готовить, спать, работать и хранить вещи, а не просто смотрит на красивый референс.</p>
+        </header>
+        <div class="case-study" id="case-35">
+          <div class="case-copy">
+            <span class="eyebrow">Сценарий интерьера</span>
+            <div class="case-sizes" role="group" aria-label="Площадь демонстрационной квартиры">
+              <button type="button" data-case="25" aria-pressed="false">25 м²</button>
+              <button type="button" data-case="30" aria-pressed="false">30 м²</button>
+              <button type="button" data-case="35" aria-pressed="true">35 м²</button>
+            </div>
+            <h3 id="case-title">Тёплая неоклассика</h3>
+            <p id="case-desc">Молочные стены, пол «ёлочкой», винные и оливковые акценты. Показываем зоны сна, работы и хранения на компактной планировке.</p>
+            <div class="case-quote" id="case-quote"><span>Расчётный пример</span><strong>6,00 + 2,95 = 8,95 млн ₽</strong><span>Квартира + проект, ремонт и комплектация</span></div>
+            <a href="#calculator" data-calc-tab="buyer" class="text-link">Проверить полную цену <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="case-view">
+            <div class="case-tabs" role="tablist" aria-label="Виды демонстрации объекта">
+              <button type="button" id="case-tab-picture" role="tab" aria-selected="true" aria-controls="case-panel-picture" data-view="picture">Интерьер</button>
+              <button type="button" id="case-tab-before" role="tab" aria-selected="false" aria-controls="case-panel-before" data-view="before" tabindex="-1">Исходное</button>
+              <button type="button" id="case-tab-plan" role="tab" aria-selected="false" aria-controls="case-panel-plan" data-view="plan" tabindex="-1">Планировка</button>
+            </div>
+            <div id="case-panel-picture" class="case-panel" role="tabpanel" aria-labelledby="case-tab-picture" tabindex="0">
+              <img id="case-image" src="./assets/interior-35.webp" width="1050" height="1400" loading="lazy" decoding="async" alt="Визуализация гостиной в тёплой неоклассике">
+              <span class="image-label">Визуализация концепции</span>
+            </div>
+            <div id="case-panel-before" class="case-panel case-diagram" role="tabpanel" aria-labelledby="case-tab-before" tabindex="0" hidden>
+              <div id="case-before"></div>
+              <span class="image-label">Пример исходного состояния · не обмер</span>
+            </div>
+            <div id="case-panel-plan" class="case-panel case-diagram" role="tabpanel" aria-labelledby="case-tab-plan" tabindex="0" hidden>
+              <div id="case-plan"></div>
+              <span class="image-label">Демонстрационная схема · не в масштабе</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-promises">
+          <article><span class="index">01</span><h3>Квартира напрямую</h3><p>Ремонт по желанию. На покупку и работы оформляются два независимых договора.</p></article>
+          <article><span class="index">02</span><h3>Две цены видны сразу</h3><p>До покупки виден ориентир общего бюджета. После обмера утверждаем смету и список включений.</p></article>
+          <article><span class="index">03</span><h3>Одна команда</h3><p>Клиенту не нужно отдельно координировать дизайнера, бригаду, доставку кухни и сборщиков.</p></article>
+          <article><span class="index">04</span><h3>Результат можно проверить</h3><p>График, фотоотчёты, чек-лист и акт. Финальные 30% в базовой схеме после приёмки работ.</p></article>
+        </div>
+        <div class="product-bottom" id="estimate">
+          <div class="subheading"><h3>Два пакета, разная степень адаптации</h3><span class="chip">Сценарий · 35 м²</span></div>
+          <div class="package-grid">
+            <article class="package"><p class="eyebrow">Для пилота</p><h4>Адаптация референса</h4><p class="package-number">2,95 млн ₽ <span>пакет</span></p><p>Пол «ёлочкой» из кварцвинила, керамогранит под камень, локальная фрезеровка, мебель и техника по списку. Один существующий санузел, без переноса мокрых зон.</p><a href="#calculator" class="text-link" data-calc-tab="deal" data-package-link="adapt">Открыть расчёт <span aria-hidden="true">↗</span></a></article>
+            <article class="package"><p class="eyebrow">По отдельному запросу</p><h4>Близко к фото</h4><p class="package-number">4,20 млн ₽ <span>цена для теста</span></p><p>Инженерная доска, заказная арка, сложная столярка и остекление после проверки проекта. Оценка затрат 3,20–3,90 млн ₽, в калькуляторе 3,45 млн ₽. Спрос и цены поставщиков не подтверждены.</p><a href="#calculator" class="text-link" data-calc-tab="deal" data-package-link="custom">Открыть расчёт <span aria-hidden="true">↗</span></a></article>
+          </div>
+          <details class="disclosure">
+            <summary>Смета и комплектация по примеру 35 м² <span class="summary-meta">2,45 млн ₽ затрат</span></summary>
+            <div class="detail-body">
+              <table class="responsive-table standard-table">
+                <thead><tr><th scope="col">Статья</th><th scope="col">Тыс. ₽</th><th scope="col">Что включено</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Подготовка и инженерия</th><td data-label="Тыс. ₽">260</td><td data-label="Состав">Локальная подготовка, электрика и сантехника в существующих зонах. Без исправления серьёзных дефектов white box.</td></tr>
+                  <tr><th scope="row">Стены, потолок и молдинги</th><td data-label="Тыс. ₽">230</td><td data-label="Состав">Подготовка, покраска, серийный лепной декор, локальный тёмный акцент.</td></tr>
+                  <tr><th scope="row">Пол и плинтусы</th><td data-label="Тыс. ₽">160</td><td data-label="Состав">SPC «ёлочкой» вместо инженерной доски, расход с запасом и укладка.</td></tr>
+                  <tr><th scope="row">Санузел и сантехника</th><td data-label="Тыс. ₽">345</td><td data-label="Состав">Гидроизоляция, керамогранит под камень, душ или ванна и стеклянный экран внутри санузла.</td></tr>
+                  <tr><th scope="row">Двери и наличники</th><td data-label="Тыс. ₽">145</td><td data-label="Состав">Серийные двери и отделка существующих проёмов вместо широкой заказной арки.</td></tr>
+                  <tr><th scope="row">Декоративный свет и зеркала</th><td data-label="Тыс. ₽">160</td><td data-label="Состав">Подвесы, бра, зеркала, фурнитура и монтаж.</td></tr>
+                  <tr><th scope="row">Подытог: ремонт с материалами</th><td data-label="Тыс. ₽"><strong>1 300</strong></td><td data-label="Состав">Сумма шести строк выше.</td></tr>
+                  <tr><th scope="row">Кухня</th><td data-label="Тыс. ₽">340</td><td data-label="Состав">Фасады МДФ, столешница, фартук, мойка; техника отдельно.</td></tr>
+                  <tr><th scope="row">Хранение и ТВ-зона</th><td data-label="Тыс. ₽">180</td><td data-label="Состав">Шкафы и прихожая по согласованной схеме.</td></tr>
+                  <tr><th scope="row">Мебель</th><td data-label="Тыс. ₽">155</td><td data-label="Состав">Кровать, матрас, диван, стол, тумбы.</td></tr>
+                  <tr><th scope="row">Техника</th><td data-label="Тыс. ₽">110</td><td data-label="Состав">Холодильник, панель, вытяжка, духовка и стиральная машина. ТВ и посудомойка не включены в базовый расчёт.</td></tr>
+                  <tr><th scope="row">Текстиль и логистика</th><td data-label="Тыс. ₽">55</td><td data-label="Состав">Базовый текстиль, доставка и сборка.</td></tr>
+                  <tr><th scope="row">Проект и управление</th><td data-label="Тыс. ₽">185</td><td data-label="Состав">Адаптация и чертежи 100; управление и контроль 85.</td></tr>
+                  <tr><th scope="row">Привлечение и резерв</th><td data-label="Тыс. ₽">125</td><td data-label="Состав">Расходы на привлечение (CAC) 65; резерв 60.</td></tr>
+                  <tr class="featured-row"><th scope="row">Итого прямые расходы</th><td data-label="Тыс. ₽"><strong>2 450</strong></td><td data-label="Состав">До налогов и общих расходов компании.</td></tr>
+                </tbody>
+              </table>
+              <p class="caption">Из референсов взяли детали прихожей, кухни-гостиной, спальни и санузла. По фото нельзя подтвердить метраж, исходный план, марки материалов или состав инженерии. Смета для white box, не коммерческое предложение и не линейный пересчёт на 25–30 м². До договора: обмер, ведомость работ и минимум два сопоставимых предложения. Ориентиры: <a class="source" href="https://uraldoma.ru/articles/apartment-renovation-cost-yekaterinburg/" target="_blank" rel="noopener noreferrer">ремонт URALDOMA</a>, <a class="source" href="https://design-et.ru/" target="_blank" rel="noopener noreferrer">дизайн Е&amp;Т</a>, <a class="source" href="https://ekaterinburg.marya.ru/mebel/decors/kuhni-s-frezerovkoj/" target="_blank" rel="noopener noreferrer">фрезерованные кухни «Мария»</a>, <a class="source" href="https://ekaterinburg.volhovec.ru/shop/wall-panels/shpon-panel/" target="_blank" rel="noopener noreferrer">шпонированные панели «Волховец»</a>.</p>
+            </div>
+          </details>
+          <details class="disclosure">
+            <summary>Этапы и контрольные результаты <span class="summary-meta">10–14 недель работ</span></summary>
+            <div class="detail-body timeline">
+              <div><span>Пилот · недели 1–2</span><h4>Девелопер и лоты</h4><p>Доступ, письменные условия и 3–5 кандидатов.</p></div>
+              <div><span>Пилот · недели 2–5</span><h4>Концепция и реклама</h4><p>План, расстановка, 2–3 ракурса и карточка с двумя ценами.</p></div>
+              <div><span>От запуска · 2–6 недель</span><h4>Сделка и обмер</h4><p>Гипотеза срока продажи. Квартиру оформляет застройщик, работы согласуем отдельно.</p></div>
+              <div><span>Работы · недели 1–2</span><h4>Проект и закупка</h4><p>Чертежи, комплектация и заказы позиций с долгой поставкой.</p></div>
+              <div><span>Работы · недели 2–9</span><h4>Инженерия и отделка</h4><p>Фото скрытых работ, график и контроль качества.</p></div>
+              <div><span>Работы · недели 8–14</span><h4>Мебель и приёмка</h4><p>Монтаж, тест техники, клининг, акт и финальный платёж.</p></div>
+              <p class="caption">Рабочий ориентир: 10–14 недель после доступа, аванса и утверждения задания, или 14–20 для «Близко к фото». До первой сдачи в пилоте ориентировочно 15–25 недель без дополнительного ожидания ключей. Некоторые этапы идут параллельно.</p>
+            </div>
+          </details>
+          <details class="disclosure">
+            <summary>Что получает покупатель на каждом этапе</summary>
+            <div class="detail-body detail-columns">
+              <div><h3>До оплаты: образец спецификации</h3><p>Например: «Кухня: фасад МДФ, столешница, мойка и согласованная техника. Не включено: телевизор, перенос мокрых зон, исправление скрытых дефектов, не выявленных при обмере». Список уточняем и подписываем для объекта.</p></div>
+              <div><h3>На стройке: образец фотоотчёта</h3><p>«Неделя 4: электрика разведена. Сверено с планом, фото трасс приложены. Следующий этап: закрытие штроб после контрольного осмотра». Это шаблон, не отчёт выполненного объекта.</p></div>
+              <div><h3>На сдаче: образец чек-листа</h3><p>Проверить фасады и фурнитуру, подключить и испытать технику, осмотреть отделку, занести замечания в перечень. При желании покупатель может отдельно пригласить независимого специалиста.</p></div>
+              <div><h3>Акт и гарантийный порядок</h3><p>В акте фиксируем принятые работы и открытые замечания, сроки их устранения и документы по оборудованию. В договоре указываем порядок гарантийного обращения, не обещая одинаковую гарантию для всех работ и товаров.</p></div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="together" class="chapter section together-section" aria-labelledby="together-title">
+      <div class="container">
+        <header class="section-head">
+          <div><p class="eyebrow"><span>04</span> · Ирина и Ая</p><h2 class="section-title" id="together-title">Как будем работать вместе</h2></div>
+          <p>Роли пока не делим. Сначала посмотрим на весь объём работы и выберем пилот, который будет по силам и интересен нам обеим.</p>
+        </header>
+        <div class="work-grid">
+          <article><span class="index">01</span><h3>До сделки</h3><p>Ищем квартиры и застройщика, проверяем планировки, готовим расчёты, концепции и объявления. Работа начинается до первых поступлений.</p></article>
+          <article><span class="index">02</span><h3>В момент сделки</h3><p>Организуем показы, сопровождаем покупку у девелопера. После обмера отдельно согласуем комплектацию, цену работ, календарь и платежи.</p></article>
+          <article><span class="index">03</span><h3>После сделки</h3><p>Ведём стройку, закупки и приёмку. Параллельно могут идти показ следующей квартиры, монтаж кухни и оплата материалов.</p></article>
+        </div>
+        <details class="disclosure dark-disclosure">
+          <summary>Полная карта совместной работы <span class="summary-meta">10 направлений</span></summary>
+          <div class="detail-body">
+            <table class="responsive-table standard-table">
+              <thead><tr><th scope="col">Направление</th><th scope="col">Что делаем</th><th scope="col">Результат</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Поиск недвижимости</th><td data-label="Работа">Сравнить ЖК, цены, планировки, ключи и исходное состояние.</td><td data-label="Результат">Шорт-лист 3–5 лотов и актуальные условия.</td></tr>
+                <tr><th scope="row">Застройщики</th><td data-label="Работа">Согласовать доступ, рекламу, фиксацию клиентов и бонус.</td><td data-label="Результат">Цель: одно письменное соглашение.</td></tr>
+                <tr><th scope="row">Предложения и расчёты</th><td data-label="Работа">Собрать полный чек, срок, график и расчёт затрат по клиенту.</td><td data-label="Результат">Карточка лота, версии предложения и сметы.</td></tr>
+                <tr><th scope="row">Интерьерные проекты</th><td data-label="Работа">Концепции, визуализации, после обмера чертежи и спецификация.</td><td data-label="Результат">Две исходные концепции, адаптация по объектам.</td></tr>
+                <tr><th scope="row">Клиенты и маркетинг</th><td data-label="Работа">Реклама, мероприятия, презентации и показы, проверка УТП.</td><td data-label="Результат">Календарь, воронка, лимит затрат.</td></tr>
+                <tr><th scope="row">Сопровождение сделок</th><td data-label="Работа">Документы, доступ, ключи, отдельный договор работ и приёмка.</td><td data-label="Результат">Чек-лист по двум договорам и платежам.</td></tr>
+                <tr><th scope="row">Поставщики и закупки</th><td data-label="Работа">Работы, материалы, сантехника, мебель, техника, свет, текстиль, аксессуары.</td><td data-label="Результат">Реестр заказов, доставок, замен и возвратов.</td></tr>
+                <tr><th scope="row">Контроль строительства</th><td data-label="Работа">Подряд, график, фото скрытых работ, проверка монтажа и техники.</td><td data-label="Результат">Журнал работ, акты и гарантийный порядок.</td></tr>
+                <tr><th scope="row">Инвестиции и отчётность</th><td data-label="Работа">Бюджет, резерв, платежи по объектам, первичные документы; бухгалтерская и налоговая отчётность с выбранным специалистом.</td><td data-label="Результат">Сверка денег, обязательств и рисков. Авансы объектов не смешиваем.</td></tr>
+                <tr><th scope="row">Дополнительные специалисты</th><td data-label="Работа">Оценить, когда нужны агент, помощник по поиску и показам или координатор сделок.</td><td data-label="Результат">Объём задач, цена и условия до привлечения.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+        <div class="together-footer">
+          <div><h3>Общие правила до распределения ролей</h3><p>Один реестр лотов, один календарь платежей, короткая еженедельная сверка. Вместе решаем, сколько вкладывать, когда привлекать специалистов и когда открывать следующий объект. Личные вклады, доли и обязанности пока не фиксируем.</p></div>
+          <a href="#calculator" data-calc-tab="pilot" class="btn btn-light">Сверить объём с бюджетом <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="calculator" class="chapter section calculator-section" aria-labelledby="calculator-title">
+      <div class="container">
+        <header class="section-head">
+          <div><p class="eyebrow"><span>05</span> · Калькулятор</p><h2 class="section-title" id="calculator-title">Проверим цифры сами</h2></div>
+          <p>Три взгляда на один сценарий: деньги покупателя, экономика одного договора и капитал на пилот. Изменения применяются сразу во всех вкладках.</p>
+        </header>
+        <div class="calc-shell">
+          <div class="calc-topline">
+            <div class="calc-tabs" role="tablist" aria-label="Режим калькулятора">
+              <button type="button" role="tab" id="calc-tab-buyer" aria-selected="false" aria-controls="calc-panel" data-tab="buyer" tabindex="-1">Покупатель</button>
+              <button type="button" role="tab" id="calc-tab-deal" aria-selected="true" aria-controls="calc-panel" data-tab="deal">Одна сделка</button>
+              <button type="button" role="tab" id="calc-tab-pilot" aria-selected="false" aria-controls="calc-panel" data-tab="pilot" tabindex="-1">Пилот</button>
+            </div>
+            <button type="button" class="text-button" id="reset-calc"><span aria-hidden="true">↺</span> Сбросить</button>
+          </div>
+          <div class="calc-presets">
+            <label for="package-select">Пакет<select id="package-select"><option value="adapt">Адаптация</option><option value="custom">Близко к фото</option></select></label>
+            <div class="scenario-wrap"><span id="scenario-label">Сценарий</span><div class="scenarios" role="group" aria-labelledby="scenario-label">
+              <button type="button" data-scenario="nobonus" aria-pressed="false">Без бонуса</button>
+              <button type="button" data-scenario="base" aria-pressed="true">Базовый</button>
+              <button type="button" data-scenario="stress" aria-pressed="false">Стресс +10%</button>
+            </div></div>
+            <p class="calc-mode" id="calc-mode">Базовые допущения</p>
+          </div>
+          <div id="calc-panel" class="calc-grid" role="tabpanel" aria-labelledby="calc-tab-deal">
+            <div class="calc-inputs" id="calc-inputs"></div>
+            <div class="calc-results" id="calc-results" aria-live="polite"></div>
+          </div>
+          <div class="calc-footer">
+            <p id="calc-status" class="caption" role="status">Сценарная модель. Не инвестиционное предложение.</p>
+            <button type="button" id="copy-calc" class="btn btn-outline">Скопировать расчёт <span aria-hidden="true">↗</span></button>
+          </div>
+        </div>
+        <details class="disclosure">
+          <summary>Как считаем: формулы и базовые допущения</summary>
+          <div class="detail-body detail-columns">
+            <div><h3>Доход и результат</h3><p>Полный чек = квартира + пакет. Выручка «Метры» = пакет + бонус; цена квартиры не входит. Результат = выручка − прямые расходы. Маржа = результат / выручка; результат к себестоимости = результат / прямые расходы.</p></div>
+            <div><h3>Кассовый разрыв и ROI</h3><p>Берём максимальный дефицит до поступлений, включая расходы на привлечение до договора. При трёх платежах учитываем также расход до промежуточного акта. Бонус приходит позже. ROI сделки = результат / пиковый дефицит, не годовая доходность.</p></div>
+            <div><h3>Капитал пилота</h3><p>Разовые + ежемесячные расходы × месяцы + активные объекты × максимум из буфера и пикового дефицита. Результат пилота = результат сделки × завершённые объекты − разовые и общие расходы. Резерв не вычитаем второй раз.</p></div>
+            <div><h3>885 тыс. ₽ не прибыль</h3><p>При 70/30 это платёж после приёмки. Из него 385 тыс. ₽ покрывают кассовый разрыв, 500 тыс. ₽ остаются результатом до общих расходов и налогов. Возможные 120 тыс. ₽ бонуса учитываются отдельно.</p></div>
+          </div>
+        </details>
+        <details class="disclosure">
+          <summary>Базовые сценарии и график оплаты</summary>
+          <div class="detail-body">
+            <table class="responsive-table standard-table"><thead><tr><th scope="col">Сценарий</th><th scope="col">Результат</th><th scope="col">Разрыв</th><th scope="col">ROI за сделку</th></tr></thead><tbody>
+              <tr><th scope="row">Без бонуса</th><td data-label="Результат">500 тыс. ₽</td><td data-label="Разрыв">385 тыс. ₽</td><td data-label="ROI">129,9%</td></tr>
+              <tr class="featured-row"><th scope="row">База, бонус 2%</th><td data-label="Результат">620 тыс. ₽</td><td data-label="Разрыв">385 тыс. ₽</td><td data-label="ROI">161,0%</td></tr>
+              <tr><th scope="row">Стресс, затраты +10%, бонус 0%</th><td data-label="Результат">255 тыс. ₽</td><td data-label="Разрыв">630 тыс. ₽</td><td data-label="ROI">40,5%</td></tr>
+            </tbody></table>
+            <p class="caption">При 30/40/30 первый платёж снижается с 2,065 млн до 885 тыс. ₽. Если до второго платежа потрачено 1,50 млн ₽, пиковый дефицит вырастает до 615 тыс. ₽. Это тестовая альтернатива, не утверждённый график.</p>
+            <div class="baseline-flow">
+              <h3>Накопленный денежный поток в базовом сценарии 70/30</h3>
+              <ol role="list">
+                <li><span>После расходов на привлечение</span><strong>−65 тыс. ₽</strong></li>
+                <li><span>После аванса за работы</span><strong>+2,00 млн ₽</strong></li>
+                <li><span>После работ, до приёмки</span><strong>−385 тыс. ₽</strong></li>
+                <li><span>После приёмки и оплаты</span><strong>+500 тыс. ₽</strong></li>
+                <li><span>После отдельной выплаты бонуса</span><strong>+620 тыс. ₽</strong></li>
+              </ol>
+              <p class="caption">Сальдо по одному объекту, без общих расходов и налогов. Вклад CAC уже включён в прямые расходы. Последний шаг зависит от соглашения с застройщиком.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="flipping" class="chapter section flip-section" aria-labelledby="flip-title">
+      <div class="container">
+        <header class="section-head">
+          <div><p class="eyebrow"><span>06</span> · Сравнение с флиппингом</p><h2 class="section-title" id="flip-title">Больше объектов без выкупа квартир</h2></div>
+          <p>Во флиппинге деньги связаны покупкой и возвращаются после перепродажи. Здесь объект покупает сам клиент, но темп всё равно ограничен спросом, резервом, бригадами и контролем.</p>
+        </header>
+        <div class="capital-comparison">
+          <div class="capital-summary"><p class="eyebrow">Сценарий · 3 одновременных объекта</p><h3>Сколько нужно зарезервировать</h3><p>Одинаковое число объектов, сравнимый состав ремонта, без кредита. У «Метры» здесь показан только рабочий резерв; с запуском и общими расходами базовый бюджет составляет 2,05 млн ₽.</p></div>
+          <figure class="capital-chart" aria-label="Оборотный резерв Метры 1,50 миллиона рублей; зарезервированный капитал флиппинга 23,70 миллиона рублей">
+            <div class="capital-row"><strong>«Метра»</strong><span class="capital-money">1,50 млн ₽</span><div class="capital-track"><div style="--bar-length:6.33%"></div></div></div>
+            <div class="capital-row"><strong>Флиппинг</strong><span class="capital-money">23,70 млн ₽</span><div class="capital-track"><div style="--bar-length:100%"></div></div></div>
+            <div class="capital-scale"><span>0</span><span>23,70 млн ₽</span></div>
+          </figure>
+        </div>
+        <details class="disclosure">
+          <summary>Сравнение одной сделки и чувствительность флипа</summary>
+          <div class="detail-body">
+            <table class="responsive-table standard-table"><thead><tr><th scope="col">Критерий</th><th scope="col">«Метра»</th><th scope="col">Флиппинг</th></tr></thead><tbody>
+              <tr><th scope="row">Покупка объекта</th><td data-label="Метра">0 ₽; платит клиент</td><td data-label="Флиппинг">5,30 млн ₽, условная покупка с дисконтом</td></tr>
+              <tr><th scope="row">Работы и прочие расходы</th><td data-label="Метра">2,45 млн ₽, частично покрыты авансом 2,065 млн ₽</td><td data-label="Флиппинг">2,385 млн ₽ работы + 215 тыс. ₽ оформление, содержание и продажа</td></tr>
+              <tr><th scope="row">Результат до общих расходов и налогов</th><td data-label="Метра">620 тыс. ₽ с бонусом или 500 тыс. ₽ без</td><td data-label="Флиппинг">400 тыс. ₽ при перепродаже за 8,30 млн ₽</td></tr>
+              <tr><th scope="row">ROI за цикл</th><td data-label="Метра">161,0% с бонусом / 129,9% без, на дефицит 385 тыс. ₽</td><td data-label="Флиппинг">5,1% на зарезервированные 7,90 млн ₽</td></tr>
+            </tbody></table>
+            <p class="caption">При затратах на флип 7,90 млн ₽: выход за 7,50 млн даёт −400 тыс. ₽; за 8,30 млн +400 тыс. ₽; за 8,70 млн +800 тыс. ₽. Это сценарии, не подтверждённые цены перепродажи. Цикл флипа 5–8 месяцев принят как допущение.</p>
+          </div>
+        </details>
+        <a class="text-link standalone-link" href="#calculator" data-calc-tab="pilot">Проверить капитал на своих цифрах <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section id="pilot" class="chapter section pilot-section" aria-labelledby="pilot-title">
+      <div class="container">
+        <header class="section-head">
+          <div><p class="eyebrow"><span>07</span> · Пилот</p><h2 class="section-title" id="pilot-title">Один ЖК. Ограниченный старт.</h2></div>
+          <p>Проверяем реальную готовность платить и собственную загрузку. Не назначаем роли заранее и не берём постоянные обязательства до решения о запуске.</p>
+        </header>
+        <div class="pilot-grid">
+          <div class="pilot-money"><p class="eyebrow">Финансирование старта</p><p class="big-number">1,55–2,05 <small>млн ₽</small></p><p>На два-три параллельных объекта, включая запуск, пять месяцев общих расходов и оборотный резерв. Если все три объекта одновременно в стрессе — 2,44 млн ₽.</p><a class="text-link" href="#calculator" data-calc-tab="pilot">Пересчитать бюджет <span aria-hidden="true">↗</span></a></div>
+          <ol class="pilot-steps" role="list">
+            <li><span class="index">01</span><div><h3>Договориться о доступе</h3><p>Один застройщик, письменные условия, 3–5 лотов и два концепта.</p></div></li>
+            <li><span class="index">02</span><div><h3>Проверить спрос деньгами</h3><p>12–15 интервью, затем 15–20 квалифицированных предложений за 4–6 недель после запуска. Цель: хотя бы два первых платежа.</p></div></li>
+            <li><span class="index">03</span><div><h3>Сдать и сверить план</h3><p>Для расширения нужны 2–3 завершённых объекта, положительный результат каждого без бонуса и подтверждённый резерв.</p></div></li>
+          </ol>
+        </div>
+        <details class="disclosure">
+          <summary>Бюджет, критерии и документы до старта</summary>
+          <div class="detail-body detail-columns">
+            <div><h3>Из чего складывается бюджет</h3><p>300 тыс. ₽ разово: два концепта 90; сайт, шаблоны и CRM 65; договоры и учёт 55; обмеры и проверка подрядчиков 40; координация запуска 50. Общие расходы: 50 тыс. ₽ × 5 месяцев. Буфер: 500 тыс. ₽ на активный ремонт. Трафик учтён в CAC.</p></div>
+            <div><h3>Что остаётся при трёх сдачах</h3><p>1,31 млн ₽ с бонусами или 950 тыс. ₽ без них после разовых и общих расходов. В стрессе 215 тыс. ₽. До налогов и окладов; не прогноз прихода денег к концу пятого месяца.</p></div>
+            <div><h3>Что сверяем</h3><p>CAC к ориентиру 65 тыс. ₽, расходы к 2,45 млн ₽, пиковый разрыв к лимиту 500 тыс. ₽, срок к договору. Записываем конверсию, причины отказа, срок бонуса и претензии по качеству.</p></div>
+            <div><h3>Что фиксируем</h3><p>Письменные условия застройщика, фактический доступ, спецификацию, смету, приёмку и гарантии, цены и сроки подрядчиков. Договоры проверяет юрист. Распределение обязанностей и личных вкладов пока открыто.</p></div>
+          </div>
+        </details>
+        <div class="inline-links"><a class="text-link standalone-link" href="#together">Карта совместной работы <span aria-hidden="true">↗</span></a><a class="text-link standalone-link" href="#calculator" data-calc-tab="pilot">Открыть калькулятор пилота <span aria-hidden="true">↗</span></a></div>
+        <a class="text-link standalone-link" href="#verdict">Читать экспертный вывод <span aria-hidden="true">↘</span></a>
+      </div>
+    </section>
+
+    <section id="verdict" class="chapter section verdict-section" aria-labelledby="verdict-title">
+      <div class="container">
+        <header class="section-head">
+          <div><p class="eyebrow"><span>08</span> · Экспертная оценка</p><h2 class="section-title" id="verdict-title">Тестировать стоит.<br>Масштабировать рано.</h2></div>
+          <p>За отделку покупатели уже платят, но чек 8,95 млн ₽ и 70% аванса по отдельному договору выглядят нишевым предложением. На пилот лучше выводить адаптацию референса, а не дорогую копию.</p>
+        </header>
+        <div class="verdict-grid">
+          <div class="verdict-main">
+            <span class="chip">Гипотеза пилота</span><h3>Начинаем с покупателей для себя</h3>
+            <p>Ищем тех, кому подходит 35 м², важен интерьер под себя и есть отдельный бюджет на работы. Для иногородних может быть ценен дистанционный контроль; тем, кому надо въехать сразу, готовый аналог подходит лучше.</p>
+            <p>Покупателям без резерва сверх ипотеки будет сложно оплатить аванс. Для них можно отдельно проверить пакет меблировки по готовой отделке. Инвестору под аренду доплату стоит оценивать по приросту чистого дохода, а не по внешнему виду квартиры.</p>
+          </div>
+          <div class="verdict-facts">
+            <p class="eyebrow">Что известно о рынке</p>
+            <div><strong>945 + 214</strong><p>Однокомнатных и студий продано в Академическом за январь–июнь 2026 г. (<a class="source" href="https://www.metrtv.ru/articles/new_buildings/20363" target="_blank" rel="noopener noreferrer">«Объектив», «Квадратный метр»</a>).</p></div>
+            <div><strong>38%</strong><p>Учитываемых сделок в новостройках Екатеринбурга в I полугодии с чистовой отделкой, не с дизайнерским ремонтом (<a class="source" href="https://corp.cian.ru/news/za-pyat-let-dolya-kvartir-s-chistovoy-otdelkoy-snizilas-pochti-vdvoe-s-32-do-18" target="_blank" rel="noopener noreferrer">Циан</a>).</p></div>
+            <div><strong>69%</strong><p>Учтённых сделок с новостройками города за январь–сентябрь 2026 г. прошли с ипотекой. Проверяем отдельный бюджет на работы (<a class="source" href="https://www.metrtv.ru/articles/new_buildings/20690" target="_blank" rel="noopener noreferrer">«Объектив», «Квадратный метр»</a>).</p></div>
+          </div>
+        </div>
+        <details class="disclosure">
+          <summary>Готовность доплачивать и предел скидки</summary>
+          <div class="detail-body">
+            <p>В общероссийском опросе «Лемана ПРО» 9% рассматривающих новостройки указали дизайнерский ремонт от застройщика, а 42% назвали приемлемой доплату за готовый ремонт 10–20% от цены квартиры без ремонта; более 30% допускали 3% (<a class="source" href="https://www.retail.ru/news/lemana-pro-90-pokupateley-novostroek-vybirayut-kvartiry-s-otdelkoy-ili-remontom-27-maya-2026-278206/" target="_blank" rel="noopener noreferrer">результаты опроса</a>). В отдельном опросе «Петровича» и «Этажей» доплату более 15% допустил примерно один из десяти (<a class="source" href="https://realty.rbc.ru/news/6aec8f630dc7127b799c7432" target="_blank" rel="noopener noreferrer">РБК Недвижимость</a>). Это не локальные измерения, и вопросы в опросах различаются.</p>
+            <p>Пакет «Метры» включает мебель, технику и управление. Премия 22,8% к готовому аналогу относится к полному чеку, а не к цене ремонта. Ни один из этих показателей не говорит, сколько покупателей Екатеринбурга подпишут договор.</p>
+            <table class="responsive-table standard-table">
+              <thead><tr><th scope="col">Общий чек</th><th scope="col">Пакет</th><th scope="col">Результат без бонуса</th><th scope="col">Пиковый дефицит</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">8,45 млн ₽</th><td data-label="Пакет">2,45 млн ₽</td><td data-label="Результат">0 ₽</td><td data-label="Дефицит">735 тыс. ₽</td></tr>
+                <tr><th scope="row">8,70 млн ₽</th><td data-label="Пакет">2,70 млн ₽</td><td data-label="Результат">250 тыс. ₽</td><td data-label="Дефицит">560 тыс. ₽</td></tr>
+                <tr class="featured-row"><th scope="row">8,95 млн ₽</th><td data-label="Пакет">2,95 млн ₽</td><td data-label="Результат">500 тыс. ₽</td><td data-label="Дефицит">385 тыс. ₽</td></tr>
+                <tr><th scope="row">10,20 млн ₽</th><td data-label="Пакет">4,20 млн ₽</td><td data-label="Результат">750 тыс. ₽</td><td data-label="Дефицит">510 тыс. ₽</td></tr>
+              </tbody>
+            </table>
+            <p class="caption">Квартира 6,00 млн ₽, график 70/30, первые три строки: прямые расходы 2,45 млн ₽. Последняя: другой пакет с затратами 3,45 млн ₽. Дешевле искать лучший вход или менять состав, чем просто уступать по цене при тех же работах.</p>
+            <a href="#calculator" data-calc-tab="deal" class="text-link">Пересчитать цену и аванс <span aria-hidden="true">↗</span></a>
+          </div>
+        </details>
+        <details class="disclosure">
+          <summary>Что снижает риск покупателя</summary>
+          <div class="detail-body detail-columns">
+            <div><h3>Цена</h3><p>Обмер, подписанная спецификация, смета на согласованный объём, список исключений и письменное согласование изменений (<a class="source" href="https://www.consultant.ru/document/cons_doc_LAW_9027/7ac1b059cae570f48b3afe418c6ad41b54f166b1/" target="_blank" rel="noopener noreferrer">ст. 709 ГК РФ</a>).</p></div>
+            <div><h3>Аванс</h3><p>Проверяемый получатель платежа, образцы и акты. Поэтапный график можно тестировать после расчёта резерва; это не эскроу. Условия отказа от договора проверяет юрист (<a class="source" href="https://www.consultant.ru/document/cons_doc_LAW_305/758e2cfdf136a621c8f66dcb3372b772c7b5e6e8/" target="_blank" rel="noopener noreferrer">ст. 32 Закона о защите прав потребителей</a>).</p></div>
+            <div><h3>Срок и качество</h3><p>График от фактического доступа, аванса и утверждения задания. Фото скрытых работ, чек-лист, возможность независимой приёмки и порядок гарантийных обращений.</p></div>
+            <div><h3>Правило пилота</h3><p>Два оплаченных договора по цене, которая работает без бонуса, сильнее кликов и устных обещаний. При нуле после 15–20 квалифицированных предложений меняем вход, пакет или платежи, а не просто увеличиваем рекламу.</p></div>
+          </div>
+        </details>
+        <details class="disclosure">
+          <summary>Как проверим, за что готовы платить</summary>
+          <div class="detail-body detail-columns">
+            <div><h3>Одинаковый лот, два первых сообщения</h3><p>При той же цене и комплектации сравним «Интерьер на вашей планировке до покупки» с «После обмера вы знаете, что входит в смету и когда принимать работу». Отметим, какое сообщение привело к запросу спецификации, встрече или оплате.</p></div>
+            <div><h3>Меняем по одному условию</h3><p>Спросим про полный бюджет, альтернативу и график взносов. Отдельно тестируем цену, состав и платежи. Один договор повод разобраться с отказами и продолжить ограниченный тест, не увеличивать нагрузку.</p></div>
+          </div>
+        </details>
+        <article id="letter" class="closing-letter">
+          <p class="eyebrow">Личное приглашение</p>
+          <h3>Ая, давай начнём<br>с одной квартиры.</h3>
+          <p>Мне хочется, чтобы мы обе понимали, что вкладываем в этот проект, что можем получить и где готовы сказать «стоп». Предлагаю вместе разобрать первый ЖК и расчёт по одному объекту. Если цифры, объём работы и сам процесс будут нам обеим подходить, договоримся о небольшом пилоте.</p>
+          <p class="signature">Ирина</p>
+          <div class="actions"><a href="#calculator" class="btn btn-primary">Пересчитать сценарий <span aria-hidden="true">↗</span></a><a href="#pilot" class="btn btn-outline">Вернуться к пилоту</a></div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner"><a href="#idea" class="wordmark" aria-label="Метра, к началу">метра<span>.</span></a><p>Ирина для Аи · Екатеринбург · Материалы к обсуждению</p><button type="button" class="text-button" id="sources-button" data-show-sources>Ссылки на источники <span aria-hidden="true">↗</span></button></div>
+  </footer>
+  <dialog id="copy-dialog" class="modal" aria-labelledby="copy-title">
+    <div class="modal-head"><h2 id="copy-title">Расчёт для обсуждения</h2><button type="button" class="close-button" data-close aria-label="Закрыть окно">×</button></div>
+    <p>Выделите текст и скопируйте, если браузер не разрешает доступ к буферу обмена.</p>
+    <label class="sr-only" for="copy-text">Текст расчёта</label><textarea id="copy-text" readonly rows="9"></textarea>
+    <button type="button" class="btn btn-primary" id="select-copy">Выделить текст</button>
+  </dialog>
+  <dialog id="sources-dialog" class="modal" aria-labelledby="sources-title">
+    <div class="modal-head"><h2 id="sources-title">Ссылки на источники</h2><button type="button" class="close-button" data-close aria-label="Закрыть окно">×</button></div>
+    <p>Рынок и цены зафиксированы в срезе от 21 ноября 2026 года. Адреса можно открыть или скопировать вручную.</p><ul id="sources-list" role="list"></ul>
+    <p id="source-status" class="caption" role="status"></p>
+  </dialog>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://perplexity.localhost","http://localhost:1420","http://127.0.0.1:1420","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  const DEFAULT_LINE_HEIGHT = 16;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  const PICK_CAPABILITIES = ["pick"];
+  const PICK_CHAIN_LENGTH = 4;
+  const PICK_MAX_TEXT_CHARS = 120;
+  const PICK_MAX_HTML_CHARS = 300;
+
+  function truncate(value, maxChars) {
+    return value.length > maxChars ? value.slice(0, maxChars - 1) + "…" : value;
+  }
+
+  function isPickableElement(element) {
+    return (
+      element instanceof Element &&
+      element !== document.documentElement &&
+      element !== document.body
+    );
+  }
+
+  function resolvePickTarget(x, y) {
+    if (!Number.isFinite(x) || !Number.isFinite(y)) return null;
+    const element = document.elementFromPoint(x, y);
+    return isPickableElement(element) ? element.closest("svg") || element : null;
+  }
+
+  function pickLabel(element) {
+    if (element.id) return element.localName + "#" + element.id;
+    return [element.localName].concat(Array.from(element.classList).slice(0, 2)).join(".");
+  }
+
+  // Only attributes that help find the element in source. data-* values and URL
+  // query strings or fragments can carry tokens.
+  const PICK_ATTRIBUTES = new Set([
+    "id",
+    "class",
+    "name",
+    "type",
+    "role",
+    "alt",
+    "aria-label",
+    "href",
+    "src",
+  ]);
+
+  function pickAttributeValue(attribute) {
+    return attribute.name === "href" || attribute.name === "src"
+      ? attribute.value.split(/[?#]/)[0]
+      : attribute.value;
+  }
+
+  function describePickElement(element) {
+    const chain = [];
+    for (
+      let current = element;
+      isPickableElement(current) && chain.length < PICK_CHAIN_LENGTH;
+      current = current.parentElement
+    ) {
+      chain.unshift(current);
+    }
+    const attributes = Array.from(element.attributes)
+      .filter((attribute) => PICK_ATTRIBUTES.has(attribute.name))
+      .map((attribute) => ` ${attribute.name}="${pickAttributeValue(attribute).replace(/"/g, "&quot;")}"`)
+      .join("");
+    const text = (element.innerText || element.textContent || "").replace(/\s+/g, " ").trim();
+    return {
+      chain: chain.map(pickLabel),
+      html: truncate(`<${element.localName}${attributes}>`, PICK_MAX_HTML_CHARS),
+      text: text ? truncate(text, PICK_MAX_TEXT_CHARS) : undefined,
+    };
+  }
+
+  // Hover asks once per frame, and innerText on a large section forces layout,
+  // so only the rect is re-read while the pointer stays on the same element.
+  // Clicks ask for fresh details since the page may have changed the element.
+  let lastPick = null;
+
+  function describePickTarget(element, fresh) {
+    if (fresh || lastPick?.element !== element) {
+      lastPick = { element, details: describePickElement(element) };
+    }
+    const rect = element.getBoundingClientRect();
+    return {
+      rect: { x: rect.left, y: rect.top, width: rect.width, height: rect.height },
+      ...lastPick.details,
+    };
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+      capabilities: PICK_CAPABILITIES,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_PICK") {
+      const element = resolvePickTarget(event.data.x, event.data.y);
+      postToTrustedTop({
+        type: "INLINE_EDIT_PICK_RESULT",
+        seq: event.data.seq,
+        target: element ? describePickTarget(element, event.data.fresh === true) : null,
+      });
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_BY") {
+      const { deltaX, deltaY, deltaMode } = event.data;
+      if (!scrollForwarding || !Number.isFinite(deltaX) || !Number.isFinite(deltaY)) return;
+      if (deltaMode !== 0 && deltaMode !== 1 && deltaMode !== 2) return;
+      const lineHeight =
+        parseFloat(getComputedStyle(document.documentElement).lineHeight) || DEFAULT_LINE_HEIGHT;
+      const scaleX = deltaMode === 1 ? lineHeight : deltaMode === 2 ? window.innerWidth : 1;
+      const scaleY = deltaMode === 1 ? lineHeight : deltaMode === 2 ? window.innerHeight : 1;
+      // The selection overlay receives the wheel event instead of this iframe.
+      // Instant scrolling preserves trackpad deltas even on smooth-scroll sites.
+      window.scrollBy({ left: deltaX * scaleX, top: deltaY * scaleY, behavior: "instant" });
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>
