@@ -13,12 +13,19 @@
   <link rel="stylesheet" href="./base.css">
   <link rel="stylesheet" href="./style.css">
   <script src="./app.js" defer></script>
+<<<<<<< HEAD
+<style>
+.wordmark{font-size:20px;max-width:160px;white-space:normal;line-height:1.05}
+#tour3d{padding:70px 0}#tour-stage{height:560px;max-height:70vh;min-height:340px;background:#eee6dc;border-radius:20px;overflow:hidden;touch-action:none;position:relative}#tour-stage canvas{display:block;width:100%;height:100%}.tour-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.tour-toolbar button{border:1px solid #998797;border-radius:30px;padding:12px 20px;background:transparent;color:#514255;cursor:pointer}.tour-toolbar button[aria-pressed=true]{background:#59445f;color:white}#tour-status{font-size:14px;line-height:1.6;margin:16px 0}.tour-hint{font-size:13px;opacity:.75;margin:12px 0}.tour-loading{position:absolute;inset:45% 15%;text-align:center;font:15px system-ui}
+</style></head>
+=======
 
   <style id="brand-name-update">
     .wordmark { font-size: clamp(15px, 1.55vw, 23px); line-height: 1.08; max-width: 165px; white-space: normal; flex-shrink: 0; letter-spacing: -0.04em; }
     @media (max-width: 600px) { .wordmark { max-width: 142px; font-size: 19px; } }
   </style>
 </head>
+>>>>>>> d0c750bab0fe998d61da80fcec5a12afd8ae3b96
 <body>
   <a class="skip" href="#main">Перейти к содержанию</a>
   <header class="site-header" id="header">
@@ -28,6 +35,7 @@
         <a href="#idea" aria-current="location">Идея</a>
         <a href="#market">Рынок</a>
         <a href="#product">Продукт</a>
+        <a href="#tour3d">3D · До / После</a>
         <a href="#together">Вместе</a>
         <a href="#calculator">Калькулятор</a>
         <a href="#flipping">Флиппинг</a>
@@ -232,6 +240,7 @@
       </div>
     </section>
 
+<section id="tour3d" class="chapter" aria-labelledby="tour-title"><div class="container"><p class="eyebrow">Интерактивная концепция · 25 м²</p><h2 id="tour-title" class="section-title">Одна квартира.<br>Два состояния.</h2><p>Посмотрите, как пустая студия может стать пространством для жизни. Переключайте состояние, сохраняя выбранный ракурс.</p><div class="tour-toolbar" role="group" aria-label="Состояние квартиры"><button type="button" id="tour-before" aria-pressed="false">До · White box</button><button type="button" id="tour-after" aria-pressed="true">После · Концепция</button><button type="button" id="tour-reset">Общий вид</button><button type="button" id="tour-auto" aria-pressed="false">Автообзор</button></div><div id="tour-stage" role="region" aria-label="Интерактивная трёхмерная модель студии"><div id="tour-loading" class="tour-loading">Загружаем 3D-модель…</div></div><p class="tour-hint">Вращение — мышью или пальцем. Масштаб — колёсиком или двумя пальцами. Стрелки клавиатуры — вращение, + / − — масштаб.</p><p id="tour-status" aria-live="polite">После: кухня, обеденная зона, диван-кровать и хранение. Вариант расстановки для обсуждения.</p><p class="caption">Концепция по предоставленной схеме 25 м², не обмерная модель. Условные габариты 6,6 × 3,79 м и высота 2,7 м. Передние стены и перегородки показаны низкими для обзора. Размеры проёмов, инженерия, проходы и мебель требуют проверки. Для 3D необходимо подключение к интернету.</p></div></section>
     <section id="together" class="chapter section together-section" aria-labelledby="together-title">
       <div class="container">
         <header class="section-head">
@@ -905,5 +914,34 @@
 })();
 
 
-</script></body>
+</script><script type="module">
+const host=document.getElementById('tour-stage'),loading=document.getElementById('tour-loading');
+try{
+const T=await import('https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js');
+const scene=new T.Scene();scene.background=new T.Color('#eee6dc');
+const cam=new T.PerspectiveCamera(40,1,.1,80),r=new T.WebGLRenderer({antialias:true});r.setPixelRatio(Math.min(devicePixelRatio,2));host.appendChild(r.domElement);loading.remove();r.domElement.tabIndex=0;r.domElement.setAttribute('aria-label','3D-обзор: стрелки вращают, плюс и минус изменяют масштаб');
+scene.add(new T.HemisphereLight(0xffffff,0xa18f7a,2.8));const light=new T.DirectionalLight(0xfff1df,3);light.position.set(2,9,4);scene.add(light);
+const shell=new T.Group(),furniture=new T.Group();scene.add(shell,furniture);
+function b(g,w,h,d,x,y,z,c){const o=new T.Mesh(new T.BoxGeometry(w,h,d),new T.MeshStandardMaterial({color:c,roughness:.8}));o.position.set(x,y,z);g.add(o);return o}
+const floor=b(shell,6.6,.13,3.79,0,-.08,0,0xc6a47c);b(shell,6.8,.16,4,0,-.23,0,0x615568);
+b(shell,.12,2.7,3.79,-3.3,1.35,0,0xe9e0d5);b(shell,5.05,2.7,.12,-.775,1.35,-1.895,0xe9e0d5);b(shell,.4,2.7,.12,3.1,1.35,-1.895,0xe9e0d5);b(shell,1.15,.8,.12,2.125,.4,-1.895,0xe9e0d5);b(shell,1.15,.35,.12,2.125,2.525,-1.895,0xe9e0d5);b(shell,1.15,1.55,.035,2.125,1.575,-1.895,0xb9d7df);
+b(shell,.12,.32,2.25,3.3,.16,-.77,0xe9e0d5);b(shell,.12,.32,.55,3.3,.16,1.62,0xe9e0d5);b(shell,.05,.6,.9,3.3,.66,.8,0xb9d7df);b(shell,.55,.25,.12,-3.025,.125,1.895,0xe9e0d5);b(shell,5.05,.25,.12,.775,.125,1.895,0xe9e0d5);
+b(shell,2.45,.65,.1,-2.075,.325,.13,0xd6c6db);b(shell,.1,.85,1.35,-.85,.425,-1.22,0xd6c6db);b(shell,2.4,.02,1.95,-2.075,.01,-.9,0xd4cbd7);
+// Kitchen.
+b(furniture,2.3,.85,.6,.4,.425,-1.54,0x967458);b(furniture,2.35,.05,.65,.4,.875,-1.54,0xf4ead9);b(furniture,2.3,.65,.34,.4,1.85,-1.67,0xc4b99e);b(furniture,.5,.02,.4,-.2,.91,-1.54,0x565356);b(furniture,.55,.02,.4,.9,.91,-1.54,0x303137);b(furniture,.6,1.95,.65,1.95,.975,-1.53,0xd2cec3);
+// Rug and sofa bed.
+b(furniture,2.5,.02,1.85,.2,.02,.8,0xd1a897);b(furniture,2.05,.16,1.05,.05,.15,1.05,0x987d70);b(furniture,1.85,.28,.85,.05,.37,1.05,0xc3ada0);b(furniture,2.05,.65,.17,.05,.57,1.52,0xbba79b);for(const x of [-.96,1.06])b(furniture,.15,.55,1,x,.42,1.09,0x9b847a);b(furniture,.7,.06,.4,.15,.43,.1,0x967458);b(furniture,.12,.4,.12,.15,.2,.1,0x967458);
+// Dining.
+b(furniture,.8,.07,.8,2.45,.76,-.1,0x967458);b(furniture,.13,.72,.13,2.45,.36,-.1,0x967458);for(const z of [-.8,.6]){b(furniture,.45,.06,.4,2.45,.45,z,0x967458);b(furniture,.45,.38,.05,2.45,.64,z+(z<0?-.2:.2),0x967458);for(const x of [2.3,2.6])b(furniture,.05,.44,.05,x,.22,z,0x967458)}
+// Entry storage and bathroom.
+b(furniture,.62,2.15,.9,-2.85,1.075,1.06,0x967458);b(furniture,.85,.08,.85,-2.78,.07,-1.36,0xfaf8f1);const screen=b(furniture,.035,1.8,.85,-2.34,.94,-1.36,0xb5d3d6);screen.material.transparent=true;screen.material.opacity=.4;b(furniture,.42,.4,.62,-1.4,.25,-1.39,0xffffff);b(furniture,.62,.65,.42,-2.77,.325,-.22,0x967458);b(furniture,.64,.08,.45,-2.77,.69,-.22,0xfbf8f1);
+let angle=.65,elev=.9,dist=11.7,auto=false;
+function setState(after){furniture.visible=after;floor.material.color.set(after?0xc6a47c:0xc5c1bb);document.getElementById('tour-before').setAttribute('aria-pressed',!after);document.getElementById('tour-after').setAttribute('aria-pressed',after);document.getElementById('tour-status').textContent=after?'После: кухня, обеденная зона, диван-кровать и хранение. Вариант расстановки для обсуждения.':'До: пустая студия white box и выделенный санузел. Отделка и размеры проёмов показаны условно.'}
+document.getElementById('tour-before').onclick=()=>setState(false);document.getElementById('tour-after').onclick=()=>setState(true);document.getElementById('tour-reset').onclick=()=>{angle=.65;elev=.9;dist=11.7};document.getElementById('tour-auto').onclick=e=>{auto=!auto;e.currentTarget.setAttribute('aria-pressed',auto)};
+const pts=new Map();let pinch=0;const clamp=()=>{elev=Math.max(.35,Math.min(1.4,elev));dist=Math.max(5,Math.min(18,dist))};r.domElement.onpointerdown=e=>{r.domElement.setPointerCapture(e.pointerId);pts.set(e.pointerId,{x:e.clientX,y:e.clientY});pinch=0};r.domElement.onpointerup=r.domElement.onpointercancel=e=>{pts.delete(e.pointerId);pinch=0};r.domElement.onpointermove=e=>{if(!pts.has(e.pointerId))return;let p=pts.get(e.pointerId);if(pts.size===1){angle-=(e.clientX-p.x)*.007;elev+=(e.clientY-p.y)*.006}pts.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pts.size===2){const a=[...pts.values()],d=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y);if(pinch&&d>0)dist*=pinch/d;pinch=d}clamp()};r.domElement.addEventListener('wheel',e=>{e.preventDefault();dist+=e.deltaY*.009;clamp()},{passive:false});r.domElement.onkeydown=e=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-'].includes(e.key))return;e.preventDefault();if(e.key==='ArrowLeft')angle-=.1;if(e.key==='ArrowRight')angle+=.1;if(e.key==='ArrowUp')elev+=.1;if(e.key==='ArrowDown')elev-=.1;if(e.key==='+'||e.key==='=')dist-=.5;if(e.key==='-')dist+=.5;clamp()};
+new ResizeObserver(()=>{const w=host.clientWidth,h=host.clientHeight;r.setSize(w,h);cam.aspect=w/h;cam.updateProjectionMatrix()}).observe(host);
+let visible=true;new IntersectionObserver(e=>{visible=e[0].isIntersecting}).observe(host);let last=0;function frame(t){requestAnimationFrame(frame);const dt=Math.min(t-last,50);last=t;if(!visible||document.hidden)return;if(auto)angle+=dt*.00015;cam.position.set(Math.sin(angle)*dist*Math.cos(elev),Math.sin(elev)*dist,Math.cos(angle)*dist*Math.cos(elev));cam.lookAt(0,.2,0);r.render(scene,cam)}setState(true);requestAnimationFrame(frame);
+}catch(e){loading.textContent='3D не загрузилось. Проверьте подключение к интернету и поддержку WebGL в браузере.';console.error(e)}
+</script>
+</body>
 </html>
